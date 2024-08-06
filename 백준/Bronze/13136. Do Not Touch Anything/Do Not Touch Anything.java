@@ -11,7 +11,8 @@ public class Main {
 		int n = Integer.parseInt(st.nextToken());
 		
 		long result = ((long) Math.ceil((double)r / n )) * ((long) Math.ceil((double)c / n ));
-		
+		// 입력 범위 꼭 확인하기!!!!!!!!!!!!!!!!
+        
 		System.out.println(result);
 	}
 }
