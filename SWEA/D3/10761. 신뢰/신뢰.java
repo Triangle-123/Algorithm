@@ -12,20 +12,20 @@ public class Solution {
 			StringTokenizer st = new StringTokenizer(br.readLine());
 			int n = Integer.parseInt(st.nextToken());
 			
-			int Time = 0;
+			int Time = 0;       // 총 시간
 			int bPosition = 1;
-			int oPosition = 1;
+			int oPosition = 1;  //  블루 오렌지 현재 위치
 			int bMove = 0;
-			int oMove = 0;
+			int oMove = 0; // 블루와 오렌지가 움직일 수 있었던 값
 			
 			for(int i = 0; i < n; i++) {
 				if(st.nextToken().equals("B")) {
 					int nextPosition = Integer.parseInt(st.nextToken());
-					if(Math.abs(bPosition - nextPosition) <= bMove) {
-						bPosition = nextPosition;
+					if(Math.abs(bPosition - nextPosition) <= bMove) { // 목표 위치로 가는 소요시간보다 움직일 수 있던 시간이 많았으면
+						bPosition = nextPosition;                    // 실제로는 가서 기다렸을 것
 						bMove = 0;
 					}
-					Time += Math.abs(bPosition - nextPosition) + 1 - bMove;
+					Time += Math.abs(bPosition - nextPosition) + 1 - bMove;   // 움직일 수 있던 것보다 소요시간이 더 많이 든다면 움직인만큼 빼준다
 					oMove += Math.abs(bPosition - nextPosition) + 1 - bMove;
 					bPosition = nextPosition;
 					bMove = 0;
