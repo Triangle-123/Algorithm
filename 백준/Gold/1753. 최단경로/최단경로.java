@@ -41,10 +41,12 @@ public class Main {
 		}
 		
 		dijkstra(K);
+        StringBuilder sb = new StringBuilder();
 		for(int i = 1; i <= V; i++) {
-			if(dist[i] == Integer.MAX_VALUE) System.out.println("INF");
-			else System.out.println(dist[i]);
+			if(dist[i] == Integer.MAX_VALUE) sb.append("INF\n");
+			else sb.append(dist[i]).append("\n");
 		}
+        System.out.println(sb);
 	}
 
 	private static void dijkstra(int start) {
