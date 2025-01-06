@@ -1,5 +1,8 @@
 class Solution {
     
+    // 너무 어려움
+    // 더 낮은 점수를 많이 맞힌 경우를 비교하는 로직이 계속 꼬였음
+    
     static boolean iswon;
     static int maxDiff = Integer.MIN_VALUE;
     static int[] result = new int[11];
