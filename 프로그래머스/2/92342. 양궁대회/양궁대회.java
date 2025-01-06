@@ -42,7 +42,6 @@ class Solution {
                 iswon = true;
             }
             else if (maxDiff == lionSum - infoSum) {
-                boolean same = true;
                 for(int i = 10; i >= 0; i--) {
                     if(lion[i] > result[i]) {
                         for(int j = 0; j < 11; j++) {
