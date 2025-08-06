@@ -1,31 +1,43 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
+import java.io.*;
 
 public class Main {
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		int N = sc.nextInt();
-		int[] A = new int[N];
+	
+	static int[] arr;
+	static int[] dp;
+	static int[] trace;
+	static int max = 1;
+	
+	public static void main(String[] args) throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int N = Integer.parseInt(br.readLine());
+		arr = new int[N];
+		dp = new int[N];
+		trace = new int[N];
+		StringTokenizer st = new StringTokenizer(br.readLine());
 		for(int i = 0; i < N; i++) {
-			A[i] = sc.nextInt();
+			arr[i] = Integer.parseInt(st.nextToken());
 		}
-		List<Integer> dp = new ArrayList<>();
-		dp.add(0);
-		for(int i = 0; i < N; i++) {
-			int curr = dp.size() - 1;
-			if(dp.get(curr) < A[i]) {
-				dp.add(A[i]);
-			} else {
-				while(curr >= 1) {
-					if(dp.get(curr - 1) < A[i]) {
-						dp.set(curr, A[i]);
-						break;
+		solve(N - 1);
+		
+		System.out.println(max);
+	}
+
+	private static int solve(int n) {
+		if(dp[n] == 0) {
+			dp[n] = 1;
+			for(int i = n - 1; i >= 0; i--) {
+				if(arr[n] > arr[i]) {
+					dp[n] = Math.max(dp[n], solve(i) + 1);
+					if(dp[n] > max) {
+						max = dp[n];
+						trace[n] = i;
 					}
-					curr--;
+				} else {
+					solve(i);
 				}
 			}
 		}
-		System.out.println(dp.size() - 1);
+		return dp[n];
 	}
 }
